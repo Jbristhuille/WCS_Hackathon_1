@@ -22,11 +22,11 @@ import { Redirect, Route } from 'react-router-dom';
 /***/
 
 /* Pages */
-import Home from './pages/Home';
+import Home from './pages/home/Home';
 /***/
 
 /* Components */
-import Menu from './components/Menu';
+import Menu from './components/menu/Menu';
 /***/
 
 /* Styles */
