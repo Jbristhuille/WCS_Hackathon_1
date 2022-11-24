@@ -22,11 +22,12 @@ import { Redirect, Route } from 'react-router-dom';
 /***/
 
 /* Pages */
-import Home from './pages/Home';
+import Home from './pages/home/Home';
+import DestinationsList from './pages/destinations-list/DestinationsList';
 /***/
 
 /* Components */
-import Menu from './components/Menu';
+import Menu from './components/menu/Menu';
 /***/
 
 /* Styles */
@@ -55,8 +56,13 @@ const App: React.FC = () => {
             <Route path="/" exact={true}>
               <Redirect to="/home" />
             </Route>
+
             <Route path="/home" exact={true}>
               <Home />
+            </Route>
+
+            <Route path="/destinations" exact={true}>
+              <DestinationsList />
             </Route>
           </IonRouterOutlet>
         </IonSplitPane>

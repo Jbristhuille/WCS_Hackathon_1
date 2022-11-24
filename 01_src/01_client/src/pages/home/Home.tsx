@@ -14,7 +14,15 @@ import React from 'react';
 /***/
 
 /* Ionic */
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import {
+    IonButtons,
+    IonContent,
+    IonHeader,
+    IonMenuButton,
+    IonPage,
+    IonTitle,
+    IonToolbar
+} from '@ionic/react';
 /***/
 
 const Home = () => {
@@ -25,7 +33,7 @@ const Home = () => {
                     <IonButtons slot="start">
                         <IonMenuButton />
                     </IonButtons>
-                    <IonTitle>Home</IonTitle>
+                    <IonTitle>Accueil</IonTitle>
                 </IonToolbar>
             </IonHeader>
 
