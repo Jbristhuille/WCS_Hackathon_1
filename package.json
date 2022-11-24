@@ -1,0 +1,22 @@
+{
+  "name": "wcs_hackathon_1",
+  "version": "0.1.0",
+  "description": "First Hackathon in Wild Code School. Theme: Travel",
+  "scripts": {
+    "setup": "npm --prefix ./01_src/01_client i && npm --prefix ./01_src/02_server i",
+    "dev": "npm --prefix ./01_src/01_client start && npm --prefix ./01_src/02_server run start:dev",
+    "client": "npm --prefix ./01_src/01_client start",
+    "server": "npm --prefix ./01_src/02_server run start:dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jbristhuille/WCS_Hackathon_1.git"
+  },
+  "keywords": [],
+  "author": "Jbristhuille",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Jbristhuille/WCS_Hackathon_1/issues"
+  },
+  "homepage": "https://github.com/Jbristhuille/WCS_Hackathon_1#readme"
+}

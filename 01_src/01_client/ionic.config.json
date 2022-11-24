@@ -1,0 +1,7 @@
+{
+  "name": "wcs_hackathon_travel",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
