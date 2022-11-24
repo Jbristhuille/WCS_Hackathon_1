@@ -96,7 +96,7 @@ const DestinationsDetails: React.FC<DestinationsDetailsProps> = ({match}) => {
 
                     <IonContent fullscreen>
                         <IonCard>
-                            <ImgSlider index={0} imgs={details.imgs} />
+                            <ImgSlider index={0} imgs={details.imgs} big={true} />
                             <IonCardHeader>
                                 <IonCardTitle>{details.name}</IonCardTitle>
                             </IonCardHeader>

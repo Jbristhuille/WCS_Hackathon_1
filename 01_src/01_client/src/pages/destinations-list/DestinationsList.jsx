@@ -32,6 +32,11 @@ import React, { useEffect, useState } from 'react';
 /* Node modules */
 import axios from 'axios';
 import ImgSlider from '../../components/img-slider/ImgSlider';
+import { NavLink } from 'react-router-dom';
+/***/
+
+/* Styles */
+import './DestinationsList.css';
 /***/
 
 const DestinationsList = () => {
@@ -46,7 +51,7 @@ const DestinationsList = () => {
     }, []);
 
     return (
-        <IonPage>
+        <IonPage className='destinations-list'>
             <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">
@@ -59,12 +64,14 @@ const DestinationsList = () => {
             <IonContent fullscreen>
                 {list.map((dest, index) => {
                     return (
-                        <IonCard key={dest._id} routerLink={`/destinations/${dest._id}`}>
-                            <ImgSlider index={index} imgs={dest.imgs} />
-                            <IonCardHeader>
-                                <IonCardTitle>{dest.name}</IonCardTitle>
-                            </IonCardHeader>
-                        </IonCard>
+                        <NavLink to={`/destinations/${dest._id}`}>
+                            <IonCard key={dest._id}>
+                                <ImgSlider index={index} imgs={dest.imgs} />
+                                <IonCardHeader>
+                                    <IonCardTitle>{dest.name}</IonCardTitle>
+                                </IonCardHeader>
+                            </IonCard>
+                        </NavLink>
                     )
                 })}
             </IonContent>

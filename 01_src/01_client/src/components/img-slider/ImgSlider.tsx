@@ -6,11 +6,17 @@
 
 /* SUMMARY
     * React
+    * Ionic
     * Styles
 */
 
 /* React */
 import React, { useEffect, useState } from 'react';
+/***/
+
+/* Ionic */
+import { IonIcon } from '@ionic/react';
+import { chevronBack, chevronForward } from 'ionicons/icons';
 /***/
 
 /* Styles */
@@ -19,7 +25,8 @@ import './ImgSlider.css';
 
 interface Imgs {
     imgs: string[],
-    index: number
+    index: number,
+    big?: boolean
 };
 
 function ImgSlider(props:Imgs) {
@@ -39,14 +46,28 @@ function ImgSlider(props:Imgs) {
         <div className="imgs-slider">
             <img alt={`Img items n°${current+1}`} src={process.env.REACT_APP_SERVER_URL+'/'+props.imgs[current]} />
 
-            <div className='slider-controller'>
-                {props.imgs.map((img, i) => (
-                    <div    className={`slider-controller-button ${i === current && 'selected'}`}
-                            key={img.slice(0,3)+i}
-                            onClick={(e) => nextSlide(e, i)}>
-                    </div>
-                ))}
-            </div>
+            {!props.big ?
+                <div className='slider-controller'>
+                    {props.imgs.map((img, i) => (
+                        <div    className={`slider-controller-button ${i === current && 'selected'}`}
+                                key={img.slice(0,3)+i}
+                                onClick={(e) => nextSlide(e, i)}>
+                        </div>
+                    ))}
+                </div>
+            :
+                <div className='slider-controller-big'>
+                    <IonIcon icon={chevronBack} onClick={(e) => {
+                        let i = props.imgs[current-1] ? current-1 : props.imgs.length-1;
+                        nextSlide(e, i);
+                    }}></IonIcon>
+
+                    <IonIcon icon={chevronForward} onClick={(e) => {
+                        let i = props.imgs[current+1] ? current+1 : 0;
+                        nextSlide(e, i);
+                    }}></IonIcon>
+                </div>
+            }
         </div>
     );
 };
