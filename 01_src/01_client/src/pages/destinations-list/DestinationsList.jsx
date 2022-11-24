@@ -31,6 +31,7 @@ import React, { useEffect, useState } from 'react';
 
 /* Node modules */
 import axios from 'axios';
+import ImgSlider from '../../components/img-slider/ImgSlider';
 /***/
 
 const DestinationsList = () => {
@@ -59,7 +60,7 @@ const DestinationsList = () => {
                 {list.map((dest, index) => {
                     return (
                         <IonCard key={dest._id}>
-                            <img alt={`Img items n°${index}`} src={process.env.REACT_APP_SERVER_URL+'/'+dest.imgs[0]} />
+                            <ImgSlider index={index} imgs={dest.imgs} />
                             <IonCardHeader>
                                 <IonCardTitle>{dest.name}</IonCardTitle>
                             </IonCardHeader>
