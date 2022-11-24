@@ -7,6 +7,7 @@
 /* SUMMARY
     * Ionic
     * React
+    * Node modules
 */
 
 /* Ionic */
@@ -22,10 +23,24 @@ import {
 /***/
 
 /* React */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+/***/
+
+/* Node modules */
+import axios from 'axios';
 /***/
 
 const DestinationsList = () => {
+    const [list, setList] = useState([]);
+
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/destinations`).then((res) => {
+            setList(res.data);
+        }).catch((err) => {
+            console.error(err);
+        });
+    }, []);
+
     return (
         <IonPage>
             <IonHeader>
@@ -38,6 +53,7 @@ const DestinationsList = () => {
             </IonHeader>
 
             <IonContent fullscreen>
+
             </IonContent>
         </IonPage>
     );
