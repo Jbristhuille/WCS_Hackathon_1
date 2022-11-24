@@ -64,8 +64,8 @@ const DestinationsList = () => {
             <IonContent fullscreen>
                 {list.map((dest, index) => {
                     return (
-                        <NavLink to={`/destinations/${dest._id}`}>
-                            <IonCard key={dest._id}>
+                        <NavLink key={dest._id} to={`/destinations/${dest._id}`}>
+                            <IonCard>
                                 <ImgSlider index={index} imgs={dest.imgs} />
                                 <IonCardHeader>
                                     <IonCardTitle>{dest.name}</IonCardTitle>

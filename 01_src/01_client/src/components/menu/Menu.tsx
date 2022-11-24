@@ -26,7 +26,9 @@ import {
   homeOutline,
   homeSharp,
   airplaneOutline,
-  airplaneSharp
+  airplaneSharp,
+  cogOutline,
+  cogSharp
 } from 'ionicons/icons';
 /***/
 
@@ -56,6 +58,11 @@ const Menu: React.FC = () => {
             <IonItem className={location.pathname === "/destinations" ? 'selected' : ''} routerLink={"/destinations"} routerDirection="none" lines="none" detail={false}>
               <IonIcon slot="start" ios={airplaneOutline} md={airplaneSharp} />
               <IonLabel>Destinations</IonLabel>
+            </IonItem>
+
+            <IonItem className={location.pathname === "/options" ? 'selected' : ''} routerLink={"/options"} routerDirection="none" lines="none" detail={false}>
+              <IonIcon slot="start" ios={cogOutline} md={cogSharp} />
+              <IonLabel>Options</IonLabel>
             </IonItem>
           </IonMenuToggle>
         </IonList>

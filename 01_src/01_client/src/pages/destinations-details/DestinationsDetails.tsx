@@ -74,8 +74,6 @@ const DestinationsDetails: React.FC<DestinationsDetailsProps> = ({match}) => {
     useEffect(() => {
         axios.get(`${process.env.REACT_APP_SERVER_URL}/destinations/${id}`).then((res) => {
             setDetails(res.data);
-            console.log(res.data); // debug
-            
         }).catch((err) => {
             console.error(err);
         });

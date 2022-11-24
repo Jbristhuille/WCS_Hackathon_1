@@ -25,6 +25,11 @@ import { Redirect, Route } from 'react-router-dom';
 import Home from './pages/home/Home';
 import DestinationsList from './pages/destinations-list/DestinationsList';
 import DestinationsDetails from './pages/destinations-details/DestinationsDetails';
+import Options from './pages/options/Options';
+/***/
+
+/* Contexts */
+import { ThemeContextProvider } from './contexts/Context';
 /***/
 
 /* Components */
@@ -49,24 +54,26 @@ setupIonicReact();
 
 const App: React.FC = () => {
   return (
-    <IonApp>
-      <IonReactRouter>
-        <IonSplitPane contentId="main">
-          <Menu />
-          <IonRouterOutlet id="main">
-            <Route path="/" exact={true}>
-              <Redirect to="/home" />
-            </Route>
+    <ThemeContextProvider>      
+      <IonApp>
+        <IonReactRouter>
+          <IonSplitPane contentId="main">
+            <Menu />
+            <IonRouterOutlet id="main">
+              <Route path="/" exact={true}>
+                <Redirect to="/home" />
+              </Route>
 
-            <Route path="/home" exact={true} component={Home}/>
+              <Route path="/home" exact={true} component={Home}/>
+              <Route path="/destinations" exact={true} component={DestinationsList} />
+              <Route path="/destinations/:id" exact={true} component={DestinationsDetails} />
+              <Route path="/options" exact={true} component={Options} />
 
-            <Route path="/destinations" exact={true} component={DestinationsList} />
-
-            <Route path="/destinations/:id" exact={true} component={DestinationsDetails} />
-          </IonRouterOutlet>
-        </IonSplitPane>
-      </IonReactRouter>
-    </IonApp>
+            </IonRouterOutlet>
+          </IonSplitPane>
+        </IonReactRouter>
+      </IonApp>
+    </ThemeContextProvider>
   );
 };
 
