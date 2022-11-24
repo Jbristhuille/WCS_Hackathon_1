@@ -10,7 +10,7 @@
 */
 
 /* React */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 /***/
 
 /* Styles */
@@ -23,7 +23,17 @@ interface Imgs {
 };
 
 function ImgSlider(props:Imgs) {
-    const [current, setCurrent] = useState(props.index);
+    const [current, setCurrent] = useState(0);
+    
+    const nextSlide = (e: any, i: number) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setCurrent(i);
+    }
+
+    useEffect(() => {
+        setCurrent(props.index);
+    }, [props.index]);
 
     return (
         <div className="imgs-slider">
@@ -33,7 +43,7 @@ function ImgSlider(props:Imgs) {
                 {props.imgs.map((img, i) => (
                     <div    className={`slider-controller-button ${i === current && 'selected'}`}
                             key={img.slice(0,3)+i}
-                            onClick={() => setCurrent(i)}>
+                            onClick={(e) => nextSlide(e, i)}>
                     </div>
                 ))}
             </div>

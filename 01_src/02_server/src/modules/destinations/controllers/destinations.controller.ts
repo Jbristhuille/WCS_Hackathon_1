@@ -9,10 +9,11 @@
 */
 
 /* Nest */
-import { Controller, HttpException, HttpStatus, Get } from '@nestjs/common';
+import { Controller, HttpException, HttpStatus, Param, Get } from '@nestjs/common';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { ObjectId } from 'mongodb';
 /***/
 
 /* Entities */
@@ -37,6 +38,26 @@ export class DestinationsController {
         } catch (err) {
             console.error(err);
             new HttpException("Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    /***/
+
+    /*
+    * Name: getOne
+    * Description: Get one destination by ID
+    * 
+    * Params:
+    * - id (String): Destination ID
+    * 
+    * Return (Object): Destination infos
+    */
+    @Get('/:id')
+    async getOne(@Param() params) {
+        try {
+            return await this.destRep.findOneBy({_id: new ObjectId(params.id)});
+        } catch (err) {
+            console.error(err);
+            return new HttpException('Internal Server Error', HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
     /***/

@@ -59,7 +59,7 @@ const DestinationsList = () => {
             <IonContent fullscreen>
                 {list.map((dest, index) => {
                     return (
-                        <IonCard key={dest._id}>
+                        <IonCard key={dest._id} routerLink={`/destinations/${dest._id}`}>
                             <ImgSlider index={index} imgs={dest.imgs} />
                             <IonCardHeader>
                                 <IonCardTitle>{dest.name}</IonCardTitle>

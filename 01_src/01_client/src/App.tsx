@@ -24,6 +24,7 @@ import { Redirect, Route } from 'react-router-dom';
 /* Pages */
 import Home from './pages/home/Home';
 import DestinationsList from './pages/destinations-list/DestinationsList';
+import DestinationsDetails from './pages/destinations-details/DestinationsDetails';
 /***/
 
 /* Components */
@@ -57,13 +58,11 @@ const App: React.FC = () => {
               <Redirect to="/home" />
             </Route>
 
-            <Route path="/home" exact={true}>
-              <Home />
-            </Route>
+            <Route path="/home" exact={true} component={Home}/>
 
-            <Route path="/destinations" exact={true}>
-              <DestinationsList />
-            </Route>
+            <Route path="/destinations" exact={true} component={DestinationsList} />
+
+            <Route path="/destinations/:id" exact={true} component={DestinationsDetails} />
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>

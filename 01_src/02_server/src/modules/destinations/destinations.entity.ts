@@ -28,4 +28,10 @@ export class Destinations {
 
     @Column()
     imgs: string[];
+
+    @Column()
+    country: string;
+
+    @Column()
+    coords: string;
 }
