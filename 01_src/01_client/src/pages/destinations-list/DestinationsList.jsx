@@ -1,17 +1,13 @@
 /**
  * @ Author: Jbristhuille
- * @ Create Time: 2022-11-24 10:28:44
- * @ Description: Home page
+ * @ Create Time: 2022-11-24 11:05:27
+ * @ Description: Destinations list page
  */
 
 /* SUMMARY
-    * React
     * Ionic
+    * React
 */
-
-/* React */
-import React from 'react';
-/***/
 
 /* Ionic */
 import {
@@ -25,7 +21,11 @@ import {
 } from '@ionic/react';
 /***/
 
-const Home = () => {
+/* React */
+import React from 'react';
+/***/
+
+const DestinationsList = () => {
     return (
         <IonPage>
             <IonHeader>
@@ -33,7 +33,7 @@ const Home = () => {
                     <IonButtons slot="start">
                         <IonMenuButton />
                     </IonButtons>
-                    <IonTitle>Accueil</IonTitle>
+                    <IonTitle>Destinations</IonTitle>
                 </IonToolbar>
             </IonHeader>
 
@@ -43,4 +43,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default DestinationsList;
