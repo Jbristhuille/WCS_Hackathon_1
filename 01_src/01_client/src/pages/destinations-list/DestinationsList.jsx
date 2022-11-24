@@ -18,7 +18,10 @@ import {
     IonMenuButton,
     IonPage,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    IonCard,
+    IonCardHeader,
+    IonCardTitle
 } from '@ionic/react';
 /***/
 
@@ -53,7 +56,16 @@ const DestinationsList = () => {
             </IonHeader>
 
             <IonContent fullscreen>
-
+                {list.map((dest, index) => {
+                    return (
+                        <IonCard key={dest._id}>
+                            <img alt={`Img items n°${index}`} src={process.env.REACT_APP_SERVER_URL+'/'+dest.imgs[0]} />
+                            <IonCardHeader>
+                                <IonCardTitle>{dest.name}</IonCardTitle>
+                            </IonCardHeader>
+                        </IonCard>
+                    )
+                })}
             </IonContent>
         </IonPage>
     );
