@@ -38,6 +38,7 @@ import { useLocation } from 'react-router-dom';
 
 /* Styles */
 import './Menu.css';
+import logo from '../../public/assets/icon/icon.png';
 /***/
 
 const Menu: React.FC = () => {
@@ -46,8 +47,10 @@ const Menu: React.FC = () => {
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
-        <IonList id="inbox-list">
-          <IonListHeader>LOGO</IonListHeader>
+        <IonList id="menu-list">
+          <IonListHeader id="icon-header">
+            <img alt="Logo" src={"assets/icon/icon.png"} style={{width: '100px'}}/>
+          </IonListHeader>
 
           <IonMenuToggle autoHide={false}>
             <IonItem className={location.pathname === "/home" ? 'selected' : ''} routerLink={"/home"} routerDirection="none" lines="none" detail={false}>
