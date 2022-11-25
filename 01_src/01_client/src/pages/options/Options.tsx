@@ -27,6 +27,7 @@ import {
     IonLabel,
     IonIcon
 } from '@ionic/react';
+import axios from 'axios';
 
 import { colorPaletteSharp, flagSharp } from 'ionicons/icons';
 /***/
@@ -44,6 +45,8 @@ import './Options.css';
 /***/
 
 const Options = () => {
+    const [destinations, setDestinations] = useState<any>();
+
     const context = useContext<any>(ThemeContext);
     const [theme, setTheme] = useState(context.config.theme);
     const [start, setStart] = useState(context.config.start);
@@ -52,6 +55,14 @@ const Options = () => {
         setTheme(context.config.theme);
         setStart(context.config.start);
     }, [context]);
+
+    useEffect(() => {
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/destinations`).then((res) => {
+            setDestinations(res.data);
+        }).catch((err) => {
+            console.error(err);
+        });
+    }, []);
 
     const updateOptions = (e: any, type: string) => {
         let options = {theme: theme, start: start};
@@ -89,9 +100,13 @@ const Options = () => {
                             Départ:
                         </IonLabel>
                         
-                        <IonSelect placeholder="Choix du point de départ" value={start} onIonChange={(e) => updateOptions(e, 'start')}>
-                            <IonSelectOption value="paris">Paris</IonSelectOption>
-                        </IonSelect>
+                        {destinations && 
+                            <IonSelect placeholder="Choix du point de départ" value={start} onIonChange={(e) => updateOptions(e, 'start')}>
+                                {destinations.map((el: any) => {
+                                    return <IonSelectOption key={el._id} value={el.code}>{el.name}</IonSelectOption>
+                                })}
+                            </IonSelect>
+                        }
                     </IonItem>
 
                     <IonItem>

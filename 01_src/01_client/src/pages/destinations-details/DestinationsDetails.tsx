@@ -12,7 +12,7 @@
 */
 
 /* React */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 /***/
 
 /* Ionic */
@@ -45,6 +45,7 @@ import { RouteComponentProps } from 'react-router';
 
 /* Components */
 import ImgSlider from '../../components/img-slider/ImgSlider';
+import { ThemeContext } from '../../contexts/Context';
 /***/
 
 interface DestinationsDetailsProps extends RouteComponentProps<{
@@ -63,10 +64,16 @@ interface Details {
 const DestinationsDetails: React.FC<DestinationsDetailsProps> = ({match}) => {
     const [details, setDetails] = useState<Details>();
     const id = match.params.id;
+    const context = useContext<any>(ThemeContext);
+    const [start, setStart] = useState();
+
+    useEffect(() => {
+        setStart(context.config.start);
+    }, [context]);
 
     const openAirFr = () => {
         if (details) {
-            const url = `https://wwws.airfrance.fr/search/open-dates?connections=PAR:C>${details.code}:C`;
+            const url = `https://wwws.airfrance.fr/search/open-dates?connections=${start}:C>${details.code}:C`;
             window.open(url);
         }
     }

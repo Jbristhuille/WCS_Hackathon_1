@@ -21,7 +21,7 @@ const ThemeContext = createContext({});
 const ThemeContextProvider = (props: Props) => {
     const [config, setConfig] = useState({
         theme: 'light',
-        start: 'paris'
+        start: 'PAR'
     });
 
     const updateConfig = (newConfig: any) => {
