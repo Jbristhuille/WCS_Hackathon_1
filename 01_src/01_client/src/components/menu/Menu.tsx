@@ -33,6 +33,7 @@ import {
 /***/
 
 /* React */
+import { NavLink } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 /***/
 
@@ -48,11 +49,14 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList id="menu-list">
-          <IonListHeader id="icon-header">
-            <img alt="Logo" src={"assets/icon/icon.png"} style={{width: '100px'}}/>
-          </IonListHeader>
 
           <IonMenuToggle autoHide={false}>
+            <IonListHeader id="icon-header">
+              <NavLink to={"/"}>
+                <img alt="Logo" src={"assets/icon/icon.png"} style={{width: '100px'}}/>
+              </NavLink>
+            </IonListHeader>
+
             <IonItem className={location.pathname === "/home" ? 'selected' : ''} routerLink={"/home"} routerDirection="none" lines="none" detail={false}>
               <IonIcon slot="start" ios={homeOutline} md={homeSharp} />
               <IonLabel>Accueil</IonLabel>
