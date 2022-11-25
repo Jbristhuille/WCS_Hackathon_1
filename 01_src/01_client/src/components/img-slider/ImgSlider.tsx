@@ -38,10 +38,6 @@ function ImgSlider(props:Imgs) {
         setCurrent(i);
     }
 
-    useEffect(() => {
-        setCurrent(props.index);
-    }, [props.index]);
-
     return (
         <div className="imgs-slider">
             <img alt={`Img items n°${current+1}`} src={process.env.REACT_APP_SERVER_URL+'/'+props.imgs[current]} />

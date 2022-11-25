@@ -42,7 +42,7 @@ const DestinationsList = () => {
     const [list, setList] = useState([]);
     const [onLoading, setOnloading] = useState(true);
 
-    const getList = (e?) => {
+    const getList = (e?: any) => {
         setOnloading(true);
         setList([]);
 
@@ -77,7 +77,7 @@ const DestinationsList = () => {
                     <IonRefresherContent></IonRefresherContent>
                 </IonRefresher>
 
-                {list.map((dest, index) => {
+                {list.map((dest: any, index: number) => {
                     return (
                         <Card key={dest._id} index={index} details={dest}/>
                     )
