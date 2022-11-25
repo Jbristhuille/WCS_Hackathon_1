@@ -18,7 +18,10 @@ import {
     IonMenuButton,
     IonPage,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    IonProgressBar,
+    IonRefresher,
+    IonRefresherContent
 } from '@ionic/react';
 /***/
 
@@ -37,17 +40,29 @@ import Card from '../../components/card/Card';
 
 const DestinationsList = () => {
     const [list, setList] = useState([]);
+    const [onLoading, setOnloading] = useState(true);
 
-    useEffect(() => {
+    const getList = (e?) => {
+        setOnloading(true);
+        setList([]);
+
         axios.get(`${process.env.REACT_APP_SERVER_URL}/destinations`).then((res) => {
             setList(res.data);
         }).catch((err) => {
             console.error(err);
+        }).then(() => {
+            setOnloading(false);
+            if (e) e.detail.complete()
         });
+    }
+
+    useEffect(() => {
+        getList();
     }, []);
 
     return (
         <IonPage className='destinations-list'>
+            {onLoading && <IonProgressBar type="indeterminate"></IonProgressBar>}
             <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">
@@ -57,7 +72,11 @@ const DestinationsList = () => {
                 </IonToolbar>
             </IonHeader>
 
-            <IonContent fullscreen>
+            <IonContent>
+                <IonRefresher slot="fixed" onIonRefresh={getList}>
+                    <IonRefresherContent></IonRefresherContent>
+                </IonRefresher>
+
                 {list.map((dest, index) => {
                     return (
                         <Card key={dest._id} index={index} details={dest}/>

@@ -32,7 +32,9 @@ import {
     IonCardTitle,
     IonItem,
     IonLabel,
-    IonList
+    IonList,
+    IonRefresher,
+    IonRefresherContent
 } from '@ionic/react';
 
 import { rocketSharp } from 'ionicons/icons';
@@ -78,12 +80,18 @@ const DestinationsDetails: React.FC<DestinationsDetailsProps> = ({match}) => {
         }
     }
 
-    useEffect(() => {
+    const getDetails = (e?: any) => {
         axios.get(`${process.env.REACT_APP_SERVER_URL}/destinations/${id}`).then((res) => {
             setDetails(res.data);
         }).catch((err) => {
             console.error(err);
+        }).then(() => {
+            if (e) e.detail.complete();
         });
+    }
+
+    useEffect(() => {
+        getDetails();
     }, [id]);
 
     return (
@@ -100,6 +108,10 @@ const DestinationsDetails: React.FC<DestinationsDetailsProps> = ({match}) => {
                     </IonHeader>
 
                     <IonContent fullscreen>
+                        <IonRefresher slot="fixed" onIonRefresh={getDetails}>
+                            <IonRefresherContent></IonRefresherContent>
+                        </IonRefresher>
+
                         <IonCard>
                             <ImgSlider index={0} imgs={details.imgs} big={true} />
                             <IonCardHeader>

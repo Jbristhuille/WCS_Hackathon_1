@@ -10,7 +10,7 @@
 */
 
 /* React */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 /***/
 
 /* Ionic */
@@ -52,6 +52,10 @@ const Home = () => {
         });
     }
 
+    useEffect(() => {
+        getRandom();
+    }, []);
+
     return (
         <IonPage className='home-page'>
             <IonHeader>
@@ -66,7 +70,7 @@ const Home = () => {
             <IonContent fullscreen className="home-page-content">
                 {random && <Card index={0} details={random}/>}
 
-                <IonButton size="large" shape="round" expand="block" onClick={getRandom}>
+                <IonButton className={'bottom'} size="large" shape="round" expand="block" onClick={getRandom}>
                     Random
                     <IonIcon slot="end" icon={diceSharp}></IonIcon>
                 </IonButton> 

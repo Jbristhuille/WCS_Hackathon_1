@@ -10,3 +10,10 @@
     justify-content: center;
     background: red; /* debug */
 }
+
+.home-page .bottom {
+    position: fixed;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+}
