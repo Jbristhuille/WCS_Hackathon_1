@@ -27,6 +27,10 @@ import {
 import ImgSlider from '../img-slider/ImgSlider';
 /***/
 
+/* Styles */
+import './Card.css';
+/***/
+
 interface Details {
     imgs: string[],
     name: string,
@@ -43,7 +47,7 @@ interface Props {
 
 const Card = (props: Props) => {
     return (
-        <NavLink to={`/destinations/${props.details._id}`}>
+        <NavLink to={`/destinations/${props.details._id}`} className="card-details">
             <IonCard>
                 <ImgSlider index={props.index} imgs={props.details.imgs} />
                 <IonCardHeader>

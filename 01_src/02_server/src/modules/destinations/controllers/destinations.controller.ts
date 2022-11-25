@@ -53,7 +53,7 @@ export class DestinationsController {
         try {
             let all = await this.destRep.find();
             let index = Math.random() * (all.length-1 - 0) + 0;
-            return all[Number(index)];
+            return all[Math.round(index)];
         } catch (err) {
             console.error(err);
             return new HttpException('Internal Server Error', HttpStatus.INTERNAL_SERVER_ERROR);
