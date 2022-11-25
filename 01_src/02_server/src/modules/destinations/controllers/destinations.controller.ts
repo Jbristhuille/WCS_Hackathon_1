@@ -43,6 +43,25 @@ export class DestinationsController {
     /***/
 
     /*
+    * Name: getRandom
+    * Description: Get random destination
+    * 
+    * Return (Object): Random item 
+    */
+    @Get('/random')
+    async getRandom() {
+        try {
+            let all = await this.destRep.find();
+            let index = Math.random() * (all.length-1 - 0) + 0;
+            return all[Number(index)];
+        } catch (err) {
+            console.error(err);
+            return new HttpException('Internal Server Error', HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+    /***/
+
+    /*
     * Name: getOne
     * Description: Get one destination by ID
     * 

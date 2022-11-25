@@ -4,3 +4,9 @@
  * @ Description: Home page custom styles
  */
 
+.home-page .home-page-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: red; /* debug */
+}

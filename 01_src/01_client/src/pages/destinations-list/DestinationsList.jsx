@@ -18,10 +18,7 @@ import {
     IonMenuButton,
     IonPage,
     IonTitle,
-    IonToolbar,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle
+    IonToolbar
 } from '@ionic/react';
 /***/
 
@@ -31,12 +28,11 @@ import React, { useEffect, useState } from 'react';
 
 /* Node modules */
 import axios from 'axios';
-import ImgSlider from '../../components/img-slider/ImgSlider';
-import { NavLink } from 'react-router-dom';
 /***/
 
 /* Styles */
 import './DestinationsList.css';
+import Card from '../../components/card/Card';
 /***/
 
 const DestinationsList = () => {
@@ -64,14 +60,7 @@ const DestinationsList = () => {
             <IonContent fullscreen>
                 {list.map((dest, index) => {
                     return (
-                        <NavLink key={dest._id} to={`/destinations/${dest._id}`}>
-                            <IonCard>
-                                <ImgSlider index={index} imgs={dest.imgs} />
-                                <IonCardHeader>
-                                    <IonCardTitle>{dest.name}</IonCardTitle>
-                                </IonCardHeader>
-                            </IonCard>
-                        </NavLink>
+                        <Card key={dest._id} index={index} details={dest}/>
                     )
                 })}
             </IonContent>

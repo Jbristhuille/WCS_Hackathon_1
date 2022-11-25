@@ -24,15 +24,15 @@ import {
     IonPage,
     IonTitle,
     IonToolbar,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardContent,
     IonButton,
     IonIcon,
-    IonList,
+    IonCard,
+    IonCardContent,
+    IonCardHeader,
+    IonCardTitle,
     IonItem,
-    IonLabel
+    IonLabel,
+    IonList
 } from '@ionic/react';
 
 import { rocketSharp } from 'ionicons/icons';

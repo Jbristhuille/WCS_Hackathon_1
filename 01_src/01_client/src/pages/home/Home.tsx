@@ -10,7 +10,7 @@
 */
 
 /* React */
-import React from 'react';
+import React, { useState } from 'react';
 /***/
 
 /* Ionic */
@@ -21,13 +21,39 @@ import {
     IonMenuButton,
     IonPage,
     IonTitle,
-    IonToolbar
+    IonToolbar,
+    IonButton,
+    IonIcon
 } from '@ionic/react';
+
+import { diceSharp } from 'ionicons/icons';
+/***/
+
+/* Styles */
+import './Home.css';
+/***/
+
+/* Components */
+import Card from '../../components/card/Card';
+/***/
+
+/* Node modules */
+import axios from 'axios';
 /***/
 
 const Home = () => {
+    const [random, setRandom] = useState();
+
+    const getRandom = () => {
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/destinations/random`).then((res) => {
+            setRandom(res.data);
+        }).catch((err) => {
+            console.error(err);
+        });
+    }
+
     return (
-        <IonPage>
+        <IonPage className='home-page'>
             <IonHeader>
                 <IonToolbar>
                     <IonButtons slot="start">
@@ -37,7 +63,13 @@ const Home = () => {
                 </IonToolbar>
             </IonHeader>
 
-            <IonContent fullscreen>
+            <IonContent fullscreen className="home-page-content">
+                {random && <Card index={0} details={random}/>}
+
+                <IonButton size="large" shape="round" expand="block" onClick={getRandom}>
+                    Random
+                    <IonIcon slot="end" icon={diceSharp}></IonIcon>
+                </IonButton> 
             </IonContent>
         </IonPage>
     );
